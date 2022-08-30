@@ -56,10 +56,10 @@ public class Main {
     public static void task2() {
         int age = 24;
 
-        if (age >= 7) {
+        if (age >= 7 && age < 18) {
             System.out.println("Ребенок ходит в школу");
         }
-        if (age >= 18) {
+        if (age >= 18 && age < 24) {
             System.out.println("Человек уже закончил школу и может отправляться в университет");
         }
         if (age >= 24) {
@@ -71,16 +71,21 @@ public class Main {
     public static void task3() {
         int trainCapacity = 102;
         int seatingPlaces = 60;
-        int standingPlaces = trainCapacity - seatingPlaces;
+        int standingPlaces = trainCapacity - seatingPlaces; // Стоячие места
+        int seatingCheck = 30;
+        int standingCheck = 15;
 
-        if (seatingPlaces <= 60) {
-            System.out.println("Сидячие места есть");
+        if (seatingCheck < seatingPlaces) {
+            System.out.println("Сидячих мест осталолоь " + (seatingPlaces - seatingCheck));
         }
-        if (standingPlaces <= 42) {
-            System.out.println("Стоячие места есть");
+        if (seatingCheck == seatingPlaces) {
+            System.out.println("Сидячих мест нет");
         }
-        if ((seatingPlaces > 60) && (standingPlaces > 42)) {
-            System.out.println("Мест нет, вагон полностью забит");
+        if (standingCheck < standingPlaces) {
+            System.out.println("Стоячие мест осталось " + (standingPlaces - standingCheck));
+        }
+        if (standingCheck == standingPlaces) {
+            System.out.println("Стоячие мест нет");
         }
     }
 
@@ -112,14 +117,19 @@ public class Main {
     public static void task6() {
         int trainCapacity = 102;
         int seatingPlaces = 60;
-        int standingPlaces = trainCapacity - seatingPlaces;
+        int standingPlaces = trainCapacity - seatingPlaces; // Стоячие места
+        int seatingCheck = 30;
+        int standingCheck = 15;
 
-        if (seatingPlaces <= 60) {
-            System.out.println("Сидячие места есть");
-        } else if (standingPlaces <= 42) {
-            System.out.println("Стоячие места есть");
-        } else if ((seatingPlaces > 60) && (standingPlaces > 42)) {
-            System.out.println("Мест нет, вагон полностью забит");
+        if (seatingCheck < seatingPlaces) {
+            System.out.println("Сидячих мест осталолоь " + (seatingPlaces - seatingCheck));
+        } else {
+            System.out.println("Сидячих мест нет");
+        }
+        if (standingCheck < standingPlaces) {
+            System.out.println("Стоячие мест осталось " + (standingPlaces - standingCheck));
+        } else {
+            System.out.println("Стоячие мест нет");
         }
     }
 
@@ -140,32 +150,46 @@ public class Main {
 
     // Задача 8
     public static void task8() {
-        int age = 2;
+        int age = 4;
         boolean attractionAgeNo = age < 5;
-        boolean attractionAgeYes = age >= 5 && age < 14;
+        boolean attractionAgeYes = age < 14;
         boolean attractionGo = age >= 14;
 
         if (attractionAgeNo) {
-            System.out.println("Ребенку меньше 5 лет, он не может кататься на аттракционе");
+            System.out.println("Ребенок не может кататься на аттракционе");
         } else if (attractionAgeYes) {
-            System.out.println("Ребенку больше 5, но меньше 14 лет, он может кататься только в сопровождении взрослого");
+            System.out.println("Ребенок может кататься только в сопровождении взрослого");
         } else if (attractionGo) {
-            System.out.println("Ребёнок старше 14 лет, он может кататься без сопровождения взрослого");
+            System.out.println("Ребёнок может кататься без сопровождения взрослого");
         }
     }
 
     // Задача 9
     public static void task9() {
-        int one = 4;
+        int one = 3;
         int two = 6;
-        int free = 1;
+        int free = 3;
 
-        if (one > two && one > free) {
-            System.out.printf("%d больше %d и %d\n", one , two, free);
-        } else if (two > one && two > free) {
-            System.out.printf("%d больше %d и %d\n", two , one, free);
-        } else if (free > one && free > two) {
-            System.out.printf("%d больше %d и %d\n", free , one, two);
-        }
+        if (one > two) {
+            if (one >= free) {
+                System.out.println("Наибольшее число one = " + one);
+            } else {
+                System.out.println("Наибольшее число free = " + free);
+            }
+            } else if (two > one) {
+                if (two >= free) {
+                    System.out.println("Наибольшее число two = " + two);
+                } else {
+                    System.out.println("Наибольшее число free = " + free);
+                }
+            } else {
+                if (one > free) {
+                    System.out.println("Наибольшее число one = " + one);
+                } else if (free > one) {
+                    System.out.println("Наибольшее число free = " + free);
+                } else {
+                    System.out.println("Числа one = " + one + ", two = " + two + " и free = " + free + " равны");
+                }
+            }
     }
 }
